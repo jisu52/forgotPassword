@@ -28,4 +28,4 @@ const planSchema = new Schema({
     },
 });
 
-module.export = mongoose.model("plan", planSchema);
+module.exports = mongoose.model("plan", planSchema);
