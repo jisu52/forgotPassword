@@ -18,16 +18,23 @@ const createPlan = async (data) => {
     });
 }
 
-const updatePlan = async ({planName, price, quality}) => {
-    let updatingPlan = await Plan.find({ planName, price, quality });
-    await Plan.updateMany(
-        { $set: { Plan: planName } },
-        { $set: { Plan: price } },
-        { $set: { Plan: quality} },
-        { new : true } 
-    )
-    updatingPlan = new Plan({ planName, price, quality });
-    await updatingPlan.save();
+const updatePlan = async ({planId, planName, price, quality}) => {
+    let updatePlan = await Plan.findOne({
+        planId
+    });
+    if (!updatePlan) {
+        throw new Error("Plan not found");
+    }
+    await Plan.findOneAndUpdate({
+        planId
+    }, {
+        planName,
+        price,
+        quality,
+    })
+    return {
+        message: "Plan updated successfully"
+    }
 }
 
 const deletePlan = async () => {
