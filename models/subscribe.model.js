@@ -3,23 +3,19 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const subscribeSchema = new Schema({
-    username: {
+    userId: {
         type: String,
-        required: true,
-        unique: true,
-    },
-    password: {
-        type: String,
-        required: true,
+        required: true
     },
     planId: {
         type: String,
+        required: true
     },
-    created_date:{
+    start_date:{
         type: Date,
         required: true,
     },
-    updated_date: {
+    expiry_date: {
         type: Date,
         required: true,
     },
@@ -27,7 +23,6 @@ const subscribeSchema = new Schema({
         type: String,
         required: true,
     },
-
 });
 
 module.exports = mongoose.model("subscribe", subscribeSchema);
