@@ -21,7 +21,7 @@ const subscribeSchema = new Schema({
     },
     status: {
         type: String,
-        required: true,
+        // required: true,
     },
 });
 
