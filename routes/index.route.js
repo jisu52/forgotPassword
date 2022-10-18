@@ -23,5 +23,5 @@ router.put("/plan/updatePlan", updatePlanController);
 router.delete("/plan/deletePlan", deletePlanController);
 
 router.post("/subscribe/createSubscription", createSubscriptionController);
-router.get("/subscribe/getActiveSubscripition", getActiveSubscripitionController);
+router.post("/subscribe/getActiveSubscripition", getActiveSubscripitionController);
 module.exports = router;
