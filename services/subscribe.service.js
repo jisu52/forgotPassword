@@ -12,19 +12,19 @@ const createSubscription = async (data) => {
     return (data);
 }
 
-const getActiveSubscripition = async(userId) => {
-    let findUser = await subscribe.find({
+const getActiveSubscripition = async({userId}) => {
+    let findUser = await subscribe.findOne({
         userId
     });
     const today = new Date();
-    if(!findUser && expiry_date < today  && start_day > today) {
+    if(!findUser && findUser.expiry_date < today  && findUser.start_date > today) {
         return {
             message: "INACTIVE"
         }
     }
-    if(findUser && expiry_date > today && today > start_day) {
+    if(findUser && findUser.expiry_date > today && today > findUser.start_date) {
         return {
-            planId
+            planId: findUser.planId
         }
     }
 }
